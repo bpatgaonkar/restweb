@@ -24,7 +24,7 @@
     
     <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource"/>
-        <property name="mappingDirectoryLocations" value="classpath:/com/dorado/spring3/rest/bean"/> 
+        <property name="mappingDirectoryLocations" value="classpath:/com/mycompany/spring3/rest/bean"/> 
         <property name="hibernateProperties">
             <props>  
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
