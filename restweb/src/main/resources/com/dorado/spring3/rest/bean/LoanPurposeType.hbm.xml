@@ -1,0 +1,57 @@
+<?xml version="1.0"?> 
+ <!DOCTYPE hibernate-mapping 
+  PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" 
+  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd"> 
+
+<hibernate-mapping> 
+
+    <class name="com.mycompany.spring3.rest.bean.LoanPurposeType"
+       table="T_LOANPURPOSETYPE" 
+       lazy="false" > 
+
+        <meta attribute="class-description" inherit="false"> 
+            @hibernate.class
+            table="T_LOANPURPOSETYPE"> 
+        </meta>
+        <id name="typeCode"  column="loanPurposeCode" type="java.lang.String"> 
+            <meta attribute="field-description">
+                @hibernate.id
+                generator-class="native"
+                type="java.lang.String" 
+                column="loanPurposeCode"  
+            </meta>
+            <meta attribute="use-in-equals">true</meta>
+            <generator class="native">
+            </generator> 
+        </id> 
+
+        <property 
+            name="displayOrder" 
+            type="java.lang.Integer" 
+            column="displayOrder" 
+            length="22" 
+            not-null="false" 
+            unique="false"> 
+            <meta attribute="field-description"> 
+                @hibernate.property 
+                column="displayOrder" 
+                length="22" 
+            </meta> 
+        </property> 
+
+        <property 
+            name="description" 
+            type="java.lang.String" 
+            column="description" 
+            length="255" 
+            not-null="false" 
+            unique="false"> 
+            <meta attribute="field-description"> 
+                @hibernate.property 
+                column="description" 
+                length="255" 
+            </meta> 
+        </property> 
+    </class> 
+</hibernate-mapping> 
+

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+  PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" 
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class
+        name="com.mycompany.spring3.rest.bean.Borrower"
+        table="T_BORROWER" lazy="false">
+
+        <meta attribute="class-description" inherit="false">
+            @hibernate.class table="T_BORROWER">
+        </meta>
+        <id name="Id" column="borrowerId" type="java.lang.Long">
+            <meta attribute="field-description">
+                @hibernate.id generator-class="native"
+                type="java.lang.Long" column="borrowerId"
+            </meta>
+            <generator class="native"></generator>
+        </id>               
+        <!-- bi-directional many-to-one association to Person -->
+        <many-to-one name="person"
+                             class="com.mycompany.spring3.rest.bean.Person"
+                             not-null="true" cascade="all" index="Borrower_Person_Indx">
+            <meta attribute="field-description">
+                @hibernate.many-to-one not-null="true" cascade="all"
+                @hibernate.column name="personId"/>
+            </meta>
+            <column name="personId" />
+        </many-to-one>         
+    </class>
+
+</hibernate-mapping>                        

@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+
+    <class 
+        name="com.mycompany.spring3.rest.bean.Person"
+        table="T_PERSON"
+        lazy="false" 
+    >
+        <id
+            name="Id"
+            type="java.lang.Long"
+            column="personId"
+        >
+            <meta attribute="field-description">
+                Unique primary key identifier for an individual Person instance.
+                @hibernate.id
+                generator-class="native"
+                type="java.lang.Long"
+                column="personId"
+            </meta>
+            <generator class="native" />
+        </id>
+        <property
+            name="birthDate"
+            type="java.sql.Timestamp"
+            column="BIRTHDATE"
+            length="7"
+        >
+            <meta attribute="field-description">
+                The date the person was born on.		   
+                @hibernate.property
+                column="BIRTHDATE"
+                length="7"
+            </meta>    
+        </property>
+        <property
+            name="firstName"
+            type="java.lang.String"
+            column="FIRSTNAME"
+            length="64"
+        >
+            <meta attribute="field-description">
+                The person's first name.
+		   
+                @hibernate.property
+                column="FIRSTNAME"
+                length="64"
+            </meta>    
+        </property>
+        <property
+            name="lastName"
+            type="java.lang.String"
+            column="LASTNAME"
+            length="64"
+        >
+            <meta attribute="field-description">
+                The person's last name.
+                @hibernate.property
+                column="LASTNAME"
+                length="64"
+            </meta>    
+        </property>
+        <property
+            name="middleName"
+            type="java.lang.String"
+            column="MIDDLENAME"
+            length="64"
+        >
+            <meta attribute="field-description">
+                The person's middle name.
+                @hibernate.property
+                column="MIDDLENAME"
+                length="64"
+            </meta>    
+        </property>
+	
+        <property
+            name="email"
+            type="java.lang.String"
+            column="EMAIL"
+            length="256"
+        >
+            <meta attribute="field-description">
+                Full email address for the person.
+
+                @hibernate.property
+                column="EMAIL"
+                length="256"
+            </meta>    
+        </property>        
+    </class>
+</hibernate-mapping>

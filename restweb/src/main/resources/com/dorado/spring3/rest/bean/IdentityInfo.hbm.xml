@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+  PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" 
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class
+        name="com.mycompany.spring3.rest.bean.IdentityInfo"
+        table="T_IDENTITYINFO" lazy="false">
+        <id name="id" column="identityInfoId">
+            <generator class="foreign">
+                <param name="property">person</param>
+            </generator>
+        </id>
+        <one-to-one name="person" constrained="true"/>  
+        <property name="identityIdNumber" type="java.lang.String" not-null="false"/>
+    </class>
+</hibernate-mapping>    

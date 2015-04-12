@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+  PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" 
+  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.mycompany.spring3.rest.bean.LoanApplication"
+		table="T_LOANAPPLICATION" lazy="false">
+
+		<id name="loanApplicationId" column="loanApplicationId"
+			type="java.lang.Long">
+                    <generator class="native"></generator>
+		</id>
+
+		<property name="loanAmount" type="java.lang.Double"
+			column="loanAmount" length="22" not-null="false" unique="false">
+			<meta attribute="field-description">
+				@hibernate.property column="loanAmount" length="22"
+			</meta>
+		</property>
+
+		<!-- bi-directional many-to-many association to Borrower -->
+		<set name="borrowers" table="T_LOANAPPLICATION_BORROWER"
+			lazy="false" inverse="true" cascade="all">
+
+			<key>
+                            <column name="loanApplicationId" not-null="true"
+                            index="LoanAppBr_Loan_Indx" />
+			</key>
+			<many-to-many class="com.mycompany.spring3.rest.bean.Borrower">
+                            <column name="borrowerId" not-null="true"
+                            index="LoanAppBr_Borrower_Indx" />
+			</many-to-many>
+		</set>                                
+		<!-- uni-directional many-to-one association to LoanPurposeType -->
+                <!--
+		<many-to-one name="loanPurposeType"
+			class="com.mycompany.spring3.rest.bean.LoanPurposeType"
+			not-null="true" cascade="none">
+			<meta attribute="field-description">
+				@hibernate.many-to-one not-null="true" cascade="none"
+				@hibernate.column name="loanPurposeCode"/>
+			</meta>
+			<column name="loanPurposeCode" />
+		</many-to-one>
+                -->
+	</class>
+
+</hibernate-mapping>
+
+
